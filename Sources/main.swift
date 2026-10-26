@@ -258,10 +258,11 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
 
     private func updateIcon() {
         let symbol: String
-        if networkBlocking { symbol = "icloud.slash" }
+        if networkBlocking { symbol = "water.waves.and.arrow.down" }
         else if batteryBlocking { symbol = "battery.25percent" }
-        else { symbol = "icloud" }
+        else { symbol = "water.waves" }
         statusItem.button?.image = NSImage(systemSymbolName: symbol, accessibilityDescription: "LowTide")
+            ?? NSImage(systemSymbolName: "drop", accessibilityDescription: "LowTide")
     }
 
     // 메뉴를 열 때마다 최신 상태로 다시 그림

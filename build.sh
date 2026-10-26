@@ -19,8 +19,9 @@ NOTARY_PROFILE="${NOTARY_PROFILE:-tile-launcher-notary}"
 STAGE=$(mktemp -d)
 trap 'rm -rf "$STAGE"' EXIT
 APP="$STAGE/LowTide.app"
-mkdir -p "$APP/Contents/MacOS"
+mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Resources"
 cp Info.plist "$APP/Contents/Info.plist"
+cp Resources/AppIcon.icns "$APP/Contents/Resources/AppIcon.icns"
 
 swiftc -O -swift-version 5 -target arm64-apple-macos13.0 \
   Sources/main.swift -o "$APP/Contents/MacOS/LowTide"

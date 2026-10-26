@@ -26,7 +26,15 @@ Wi-Fi가 저데이터 모드면 iCloud는 동기화를 멈춥니다. 그런데 G
 
 ## 설치
 
-[Releases](https://github.com/colaH16/LowTide/releases)에서 `LowTide-<버전>-arm64.zip`을 받아 압축을 풀고, `LowTide.app`을 `/Applications`로 옮기면 됩니다. Developer ID로 서명하고 Apple 공증을 받은 빌드입니다.
+Homebrew:
+
+```bash
+brew install --cask colah16/tap/lowtide
+```
+
+원하는 폴더에 설치하려면 `--appdir`를 쓰세요. 예: `--appdir="$HOME/Applications/launch at login"`
+
+직접 받기: [Releases](https://github.com/colaH16/LowTide/releases)에서 `LowTide-<버전>-arm64.zip`을 받아 압축을 풀고, `LowTide.app`을 `/Applications`로 옮기면 됩니다. Developer ID로 서명하고 Apple 공증을 받은 빌드입니다.
 
 - 요구 사항: macOS 13 이상, Apple Silicon
 - 로그인할 때 자동으로 켜려면 메뉴에서 **로그인 시 실행**을 체크하세요.
@@ -40,6 +48,8 @@ Xcode 없이 Command Line Tools만 있으면 됩니다.
 ./build.sh install    # /Applications 에 설치하고 실행
 ./build.sh release    # Developer ID 서명 + 공증 → dist/LowTide-<버전>-arm64.zip
 ```
+
+앱 아이콘은 `tools/make-icon.swift`가 코드로 그립니다. 수정한 뒤 `tools/make-icns.sh`를 실행하면 `Resources/AppIcon.icns`가 다시 만들어집니다.
 
 `release`는 `SIGN_IDENTITY`(Developer ID Application 인증서)와 `NOTARY_PROFILE`(`xcrun notarytool store-credentials`로 저장한 프로필) 환경변수를 사용합니다.
 
